@@ -1,4 +1,4 @@
-# HTML Scrapper
+# HTML Scraper
 
 This is a simple script to scrape HTML from any website.
 
