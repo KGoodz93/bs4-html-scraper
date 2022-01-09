@@ -2,29 +2,30 @@
 
 from bs4 import BeautifulSoup
 import requests
-import sys
+import os
+import datetime
 
 # Variables
 
-path = r"../logs/"
-
-# Webpage URL
-
+user = os.getlogin()
+path = fr"C:\Users\{user}\Dropbox\Coding\Git\HTML-scrapper\logs"
 url = input("Enter URL Here: ")
+dt = datetime.datetime.today().strftime("%Y%m%d_%H%M%S")
+filename = f"WS_{dt}.txt"
 
 result = requests.get(url)
 doc = BeautifulSoup(result.text, "html.parser")
 print(doc)
 
-print(f"\nHTML has now been scrapped from {url}")
+print("\n---")
+print(f"\nHTML has been scrapped from: {url}")
 
 # Write HTML to notepad
 
-file = open(f"{path}newfile.txt", "a")
-file.write(str(doc))
+file = open(rf"{path}\{filename}", "a")
+file.write(str(doc.encode("utf-8")))
 file.close()
 
-print(f"Log file has been created - {path}")
+print(f"\nOutpit file has been created - {path}")
 
-input("Press any Key to exit .. ")
-sys.exit()
+input("\nPress any key to exit .. ")
