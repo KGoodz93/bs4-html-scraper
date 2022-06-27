@@ -2,11 +2,11 @@
 
 from bs4 import BeautifulSoup
 from requests_html import HTMLSession
-import datetime
+from datetime import datetime
 
 # Variables
-dateformat1 = datetime.datetime.today().strftime("%Y%m%d")
-file = f'data-{dateformat1}.txt'
+
+dateformat1 = datetime.today().strftime("%Y%m%d")
 
 # Script
 
@@ -18,10 +18,10 @@ soup = BeautifulSoup(r, 'lxml')
 
 # Scrape HTML and create a .txt file with the data
 
-print(f'\nScraping data from {url}')
+print(f'\nGenerating data from {url}')
 
-with open(f'{file}', 'w') as f:
+with open(f'data-{dateformat1}.txt', 'w') as f:
     f.write(str(soup.prettify()))
 
-print(f'\nProcess complete! File saved as: {file}')
+print('Script Complete!')
 input('\nPress any key to exit ..')
